@@ -1,0 +1,48 @@
+#!jinja2
+[scheduler]
+    allow implicit tasks = True
+[scheduling]
+    #initial cycle point = 20230520T00
+    #final cycle point   = 20230521T00
+    [[graph]]
+            #P1D = pre => model => prepda => da => post
+            #R1 = model
+            R1  = pre => model
+
+[runtime]
+    [[root]]
+        [[[environment]]]
+            START_DATE = 20240101T00 #$CYLC_TASK_CYCLE_POINT # (use env variable when cycling)
+            WALUIGI_INPUT_FILE = config.yml
+
+    [[WALUIGI_ENV]]
+        env-script = """
+            set +eu
+            conda activate /work/cmcc/js04724/waluigi/waluigi
+            set -eu
+        """
+
+    [[pre]] # Pre-processing step
+        inherit = WALUIGI_ENV
+        script = pre-process.sh        
+
+    [[model]] # Update input files and run SHYFEM
+        script = modelrun.sh
+
+    [[prepda]]
+        #script = prep_da.sh
+            # Postprocess the model outputs
+            # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
+            # Add your postprocessing commands here (e.g., generating plots, statistics)
+
+    [[da]]
+        #script = run_da.sh
+            # Postprocess the model outputs
+            # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
+            # Add your postprocessing commands here (e.g., generating plots, statistics)    
+
+    [[post]]
+        #script = """
+            # Postprocess the model outputs
+            # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
+            # Add your postprocessing commands here (e.g., generating plots, statistics)

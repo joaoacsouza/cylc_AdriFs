@@ -1,0 +1,934 @@
+
+# Notes:
+# "input/" was prepended to filenames of extension .dat by means of
+#
+# sed -i "s/'\([^']*.dat\)'/\'input\/\1\'/g" $file              # replace in-place 
+# sed  "s/'\([^']*.dat\)'/\'input\/\1\'/g" $file > $new_file    # makes changes on $new_file 
+
+
+
+$title
+        uae 
+        ../output/shyfem/adri_output
+        ../input/adri.bas
+$end
+
+
+        idtrst  = -1   # to write restart files at the end 
+$para
+        date = 
+        time = 000000
+
+        coumax = 0.9
+        itsplt = 2
+        idtsyn = 1800
+        idtmin = 1
+
+        itanf = 0  
+        itend = 86400  
+        idt   = 300
+
+        itrst   = 0
+        ityrst  = 1     
+                
+        idtrst  = 0   
+
+        idtout = 3600 
+        itmout = 1800
+
+        idtcon = 3600 
+        itmcon = 1800
+
+       
+        ilin = 0
+        itlin = 0
+        iclin = 0
+
+        rlin = 1.0
+
+        ampar = 1.0 
+        azpar = 1.0
+        aapar = 0
+
+        ievap = 1
+        isolp = 1
+        ihtype = 3
+        iheat = 8
+        iwtype = 1
+        itdrag = 4
+        dragco = 0.0025
+        isphe = 1
+        noslip = 1
+
+        iturb = 1
+
+        ireib = 6
+        czdef = 0.01 
+
+
+        ibarcl = 1
+        itemp = 1
+        isalt = 1
+
+        idhtyp = 2
+
+        vismol = 1.e-6
+        difmol = 1.e-7
+        ilytyp = 2
+        vreps  = 1.e-3
+
+        shpar = 0.2
+        thpar = 0.2
+        ahpar = 0.2
+
+$end
+
+$levels
+  2.0
+	3.0
+	4.0
+	5.0
+	6.0
+	7.0
+	8.0
+	9.0
+	10.0
+	11.0
+	12.0
+	13.0
+	14.0
+	15.0
+	16.0
+	17.0
+	18.0
+	19.0
+	20.0
+	22.0
+	24.0
+	26.0
+	28.0
+	30.0
+	32.0
+	34.0
+	36.0
+	38.0
+	40.0
+	42.0
+	44.0
+	46.0
+	48.0
+	50.0
+	52.0
+	54.0
+	56.0
+	58.0
+	60.0
+	62.0
+	64.0
+	66.0
+	68.0
+	70.0
+	72.0
+	74.0
+	76.0
+	78.0
+	80.0
+	82.0
+	84.0
+	86.0
+	88.0
+	90.0
+	95.0
+	100.0
+	105.0
+	110.0
+	115.0
+	120.0
+	125.0
+	130.0
+	135.0
+	140.0
+	150.0
+	160.0
+	170.0
+	180.0
+	190.0
+	200.0
+	250.0
+	300.0
+	350.0
+	400.0
+	450.0
+	500.0
+	550.0
+	600.0
+	650.0
+	700.0
+	750.0
+	800.0
+	850.0
+	900.0
+	950.0
+	1000.0
+	1100.0
+	1200.0
+	1300.0
+	1400.0
+	1500.0
+	1600.0
+	1700.0
+	1800.0
+	1900.0
+	2000.0
+	2100.0
+	2200.0
+	2300.0
+	2400.0
+	2525.0
+$end
+
+
+------- boundary L1 --------
+$bound1
+       kbound = 8852
+	8851
+	8850
+	8849
+	8848
+	8847
+	8846
+	8845
+	8844
+	8843
+	8842
+	8841
+	8840
+	8839
+	8838
+	8837
+	8836
+	8835
+	8834
+	8833
+	8832
+	8831
+	8830
+	8829
+	8828
+	8827
+	8826
+	8825
+	8824
+	8823
+	8822
+	8821
+	8820
+	8819
+	8818
+	8817
+	8816
+	8815
+	8814
+	8813
+	8812
+	8811
+	8810
+	8809
+	8808
+	8807
+	8806
+	8805
+	8804
+	8803
+	8802
+	8801
+	8800
+	8799
+	8798
+	8797
+	8796
+	8795
+	8794
+	8793
+	8792
+	8791
+	8790
+	8789
+	8788
+	8787
+	8786
+	8785
+	8784
+	8783
+	8782
+	8781
+	8780
+	8779
+	8778
+	8777
+	8776
+	8775
+	8774
+	8773
+	8772
+	8771
+	8770
+	8769
+	8768
+	8767
+	8766
+	8765
+	8764
+	8763
+	8762
+	8761
+	8760
+	8759
+	8758
+	8757
+	8756
+	8755
+	8754
+	8753
+	8752
+	8751
+	8750
+	8749
+	8748
+	8747
+	8746
+	8745
+	8744
+	8743
+	8742
+	8741
+	8740
+	8739
+  ibtyp = 1
+  intpol = 2
+  tnudge = 600
+
+  boundn = 'boundn_1.dat'
+  tempn = 'tempn_1.dat'
+  saltn = 'saltn_1.dat'
+  vel3dn = 'uv3d_1.dat'
+$end
+------------------------------------------------------
+
+
+
+
+
+--------------------------------- VJIOSE ok -------------------
+$bound2
+   kbound = 7485 7484
+   ibtyp  = 2
+   boundn = '../input/Vjiose_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- SEMAN ok-------------------
+$bound3
+   kbound = 7418 7417
+   ibtyp  = 2
+   boundn = '../input/Seman_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- SHKUMBI ok-------------------
+$bound4
+   kbound = 7172 7171
+   ibtyp  = 2
+   boundn = '../input/Shkumbi_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- ERZEN ok-------------------
+   kbound = 7044 7045
+$bound5
+   kbound = 7045 7044
+   ibtyp  = 2
+   boundn = '../input/ERZEN_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- ISHM ok-------------------
+$bound6
+   kbound = 6879 6878
+   ibtyp  = 2
+   boundn = '../input/ISHM_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- MAT ok-------------------
+$bound7
+   kbound = 6814 6813
+   ibtyp  = 2
+   boundn = '../input/Mat_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- BUENE ok-------------------
+$bound8
+   kbound = 52804 175996
+   ibtyp  = 2
+   boundn = '../input/BUENE_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Neretva ok -------------------
+$bound9
+   kbound = 4676 4675
+   ibtyp  = 2
+   boundn = '../input/Neretva_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Ombla ok-------------------
+$bound10
+   kbound = 5785 5784
+   ibtyp  = 2
+   boundn = '../input/Ombla_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Cetina ok -------------------
+$bound11
+   kbound = 42385 121543
+   ibtyp  = 2
+   boundn = '../input/Cetina_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Zrnovnica ok-------------------
+$bound12
+   kbound = 4274 164806
+   ibtyp  = 2
+   boundn = '../input/Zrnovnica_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Jadro ok-------------------
+$bound13
+   kbound = 4196 4195
+   ibtyp  = 2
+   boundn = '../input/Jadro_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Krka ok -------------------
+$bound14
+   kbound = 105697 125865
+   ibtyp  = 2
+   boundn = '../input/Krka_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Zrmanja ok-------------------
+   kbound = 110380 173628
+$bound15
+   kbound = 110380 2966 
+   ibtyp  = 2
+   boundn = '../input/Zrmanja_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Dubracina ok -------------------
+$bound16
+   kbound = 2427 2426
+   ibtyp  = 2
+   boundn = '../input/Dubracina_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Rjecina ok -------------------
+$bound17
+   kbound = 2320 2319
+   ibtyp  = 2
+   boundn = '../input/Rjecina_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Rasa ok-------------------
+$bound18
+   kbound = 2008 2007
+   ibtyp  = 2
+   boundn = '../input/Rasa_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Mirna ok-------------------
+$bound19
+   kbound = 1403 1402
+   ibtyp  = 2
+   boundn = '../input/Mirna_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- ISONZO ok -------------------
+$bound20
+   kbound = 61043 198968
+   ibtyp  = 2
+   boundn = '../input/Isonzo_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Bocca_di_Primero ok-------------------
+   kbound = 886 106118
+$bound21
+   kbound = 106118 886
+   ibtyp  = 2
+   boundn = '../input/Bocca_di_Primero_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- La_Fosa ok-------------------
+$bound22
+   kbound = 850 849
+   ibtyp  = 2
+   boundn = '../input/La_Fosa_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Canale_di_Morgo ok -------------------
+   kbound = 97 25406
+$bound23
+   kbound = 807 806
+   ibtyp  = 2
+   boundn = '../input/Canale_di_Morgo_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Pto_Buso ok-------------------
+   kbound = 51117 82563
+$bound24
+   kbound = 787 786 
+   ibtyp  = 2
+   boundn = '../input/Pto_Buso_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Zellina ok -------------------
+   kbound = 26116 192812
+$bound25
+   kbound = 750 749 
+   ibtyp  = 2
+   boundn = '../input/Zellina_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Pto_Lignano ok -------------------
+$bound26
+   kbound = 664 663
+   ibtyp  = 2
+   boundn = '../input/Pto_Lignano_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Tagliamento ok -------------------
+$bound27
+   kbound = 637 173673
+   ibtyp  = 2
+   boundn = '../input/Tagliamento_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Sile ok-------------------
+$bound28
+   kbound = 447 446
+   ibtyp  = 2
+   boundn = '../input/Sile_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Canale_Nicessolo ok-------------------
+$bound29
+   kbound = 568 567
+   ibtyp  = 2
+   boundn = '../input/Canale_Nicessolo_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Canale_dei_Lovi ok -------------------
+$bound30
+   kbound = 588 587
+   ibtyp  = 2
+   boundn = '../input/Canale_dei_Lovi_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Livenza ok -------------------
+$bound31
+   kbound = 550 549
+   ibtyp  = 2
+   boundn = '../input/Livenza_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Piave ok-------------------
+$bound32
+   kbound = 498 497
+   ibtyp  = 2
+   boundn = '../input/Piave_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Pto_di_Lido ok-------------------
+   kbound = 23129 23130
+$bound33
+   kbound = 14519 14518
+   ibtyp  = 2
+   boundn = '../input/Pto_di_Lido_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Pto_di_Malamocco ok -------------------
+   kbound = 23063 23064
+$bound34
+   kbound = 41818 136935
+   ibtyp  = 2
+   boundn = '../input/Pto_di_Malamocco_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Pto_di_Chioggia -------------------
+   kbound = 24042 24043
+$bound35
+   kbound = 14139 14138 
+   ibtyp  = 2
+   boundn = '../input/Pto_di_Chioggia_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Brenta ok -------------------
+$bound36
+   kbound = 14048 14047
+   ibtyp  = 2
+   boundn = '../input/Brenta_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Adige ok-------------------
+$bound37
+   kbound = 14027 14026
+   ibtyp  = 2
+   boundn = '../input/Adige_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Po_di_Levante ok -------------------
+   kbound = 13988 13989
+$bound38
+   kbound = 13989 13988
+   ibtyp  = 2
+   boundn = '../input/Po_di_Levante_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_MAISTRA ok-------------------
+$bound39
+   kbound = 13969 13968
+   ibtyp  = 2
+   boundn = '../input/PO_DI_MAISTRA_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_TRAMONTANA ok -------------------
+$bound40
+   kbound = 13939 13938
+   ibtyp  = 2
+   boundn = '../input/PO_DI_TRAMONTANA_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_DRITTA ok-------------------
+$bound41
+   kbound = 13922 13921
+   ibtyp  = 2
+   boundn = '../input/PO_DI_DRITTA_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_SCIROCCO ok -------------------
+$bound42
+   kbound = 13883 13882
+   ibtyp  = 2
+   boundn = '../input/PO_DI_SCIROCCO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_BONIFAZI ok -------------------
+$bound43
+   kbound = 13886 13885
+   ibtyp  = 2
+   boundn = '../input/PO_DI_BONIFAZI_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_BASTIMENTO ok -------------------
+$bound44
+   kbound = 13865 13864
+   ibtyp  = 2
+   boundn = '../input/PO_DI_BASTIMENTO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_TOLLE ok -------------------
+$bound45
+   kbound = 13845 13844
+   ibtyp  = 2
+   boundn = '../input/PO_DI_TOLLE_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_GNOCCA ok -------------------
+$bound46
+   kbound = 13755 13754
+   ibtyp  = 2
+   boundn = '../input/PO_DI_GNOCCA_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- PO_DI_GORO ok -------------------
+$bound47
+   kbound = 13736 13735
+   ibtyp  = 2
+   boundn = '../input/PO_DI_GORO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Po_di_Volano ok -------------------
+$bound48
+   kbound = 13656 13655
+   ibtyp  = 2
+   boundn = '../input/Po_di_Volano_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Reno ok -------------------
+$bound49
+   kbound =  13562 13561
+   ibtyp  = 2
+   boundn = '../input/Reno_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Lamone ok -------------------
+   kbound = 13518 13519
+$bound50
+   kbound = 13519 13518
+   ibtyp  = 2
+   boundn = '../input/Lamone_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Fiumi_Uniti ok -------------------
+   kbound = 13468 13469
+$bound51
+   kbound = 216055 13468 
+   ibtyp  = 2
+   boundn = '../input/Fiumi_Uniti_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Bevano ok -------------------
+   kbound = 13452 13453
+$bound52
+   kbound = 13453 13452
+   ibtyp  = 2
+   boundn = '../input/Bevano_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Savio ok -------------------
+$bound53
+   kbound = 13438 13437
+   ibtyp  = 2
+   boundn = '../input/Savio_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Rubicone ok -------------------
+   kbound = 13367 13368
+$bound54
+   kbound = 13368 13367
+   ibtyp  = 2
+   boundn = '../input/Rubicone_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Uso ok -------------------
+$bound55
+   kbound = 13355 13354
+   ibtyp  = 2
+   boundn = '../input/Uso_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Tronto ok -------------------
+$bound56
+   kbound = 12645 12644
+   ibtyp  = 2
+   boundn = '../input/Tronto_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+
+--------------------------------- FORTORE ok -------------------
+$bound57
+   kbound = 12016 12015
+   ibtyp  = 2
+   boundn = '../input/FORTORE_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- CERVARO ok -------------------
+$bound58
+   kbound = 11505 11504
+   ibtyp  = 2
+   boundn = '../input/CERVARO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- OFANTO ok -------------------
+$bound59
+   kbound = 11389 11388
+   ibtyp  = 2
+   boundn = '../input/OFANTO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- BASENTO ok -------------------
+   kbound = 9479 9480
+$bound60
+   kbound = 9480 9479
+   ibtyp  = 2
+   boundn = '../input/BASENTO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- BRADANO ok -------------------
+   kbound = 9500 165318
+$bound61
+   kbound = 165318 9500
+   ibtyp  = 2
+   boundn = '../input/BRADANO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- CRATI ok -------------------
+   kbound = 9222 135023
+$bound62
+   kbound = 9222 86413 
+   ibtyp  = 2
+   boundn = '../input/CRATI_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- SINNI ok -------------------
+   kbound = 9407 9408
+$bound63
+   kbound = 9408 9407
+   ibtyp  = 2
+   boundn = '../input/SINNI_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- AGRI ok-------------------
+$bound64
+   kbound = 9433 9432
+   ibtyp  = 2
+   boundn = '../input/AGRI_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- NETO ok -------------------
+$bound65
+   kbound = 8885 8884
+   ibtyp  = 2
+   boundn = '../input/NETO_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+--------------------------------- Thyamis ok -------------------
+$bound66
+   kbound = 31278 31583
+   ibtyp  = 2
+   boundn = '../input/Thyamis_Q.dat'
+   salt   = 15
+   temp   = -999
+   levmax = 1
+$end
+
+
+$name
+   tempin = 'tempin.dat'      
+   saltin = 'saltin.dat'      
+   wind = 'wp.dat'
+   qflux = 'tc.dat'
+   gotmpa = '../input/gotmturb.nml'
+$end

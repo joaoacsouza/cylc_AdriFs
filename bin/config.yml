@@ -1,0 +1,151 @@
+#
+# Mesh, BCs, levels and int/ext numbering
+#
+
+- key: grid3Dpath
+  name: 3D grid path
+  value: ../input/adri.grd
+  description: path of the grd grid file.
+
+- key: boundariesPath
+  name: complete path to the boundary files
+  value: 
+    - ../input/bc_adri.dat
+  description: BC files. List of nodes (anti-clockwise sorted) for each BC.
+
+- key: levels
+  name: vertical discretization
+  value: [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0, 22.0, 24.0, 26.0, 28.0, 30.0, 32.0, 34.0, 36.0, 38.0, 40.0, 42.0, 44.0, 46.0, 48.0, 50.0, 52.0, 54.0, 56.0, 58.0, 60.0, 62.0, 64.0, 66.0, 68.0, 70.0, 72.0, 74.0, 76.0, 78.0, 80.0, 82.0, 84.0, 86.0, 88.0, 90.0, 95.0, 100.0, 105.0, 110.0, 115.0, 120.0, 125.0, 130.0, 135.0, 140.0, 150.0, 160.0, 170.0, 180.0, 190.0, 200.0, 250.0, 300.0, 350.0, 400.0, 450.0, 500.0, 550.0, 600.0, 650.0, 700.0, 750.0, 800.0, 850.0, 900.0, 950.0, 1000.0, 1100.0, 1200.0, 1300.0, 1400.0, 1500.0, 1600.0, 1700.0, 1800.0, 1900.0, 2000.0, 2100.0, 2200.0, 2300.0, 2400.0, 2525.0]
+  description: insert every level in meters
+
+- key: mappingPath
+  name: Boundary mapping filepath
+  value: ../input/adriie.dat
+  description: insert every level in meters
+
+#
+# Period for preprocessing
+#
+
+- key: start_date
+  name: start date
+  value: 2023/05/19 00:00:00
+  description: specify start date following format specified in key start_date_format. Default format is yyyy/mm/dd  HH:MM:SS
+
+- key: start_date_format
+  name: start date format
+  value: "%Y/%m/%d %H:%M:%S" # "%Y%m%dT%H:" 
+  description: specify date format for start_date key to be compatible with function datetime.strptime(start_date,start_date_format)
+
+- key: ndays
+  name: total days of simulation
+  value: 3
+  description: first and last days included
+
+#
+# Tides
+# 
+
+- key: OTPSNCbin
+  name: predict_tide OTPSNC bin filepath
+  value: /work/opa/<your_folder>/data_exchange/OTPSnc/bin/predict_tide
+  description: no description
+
+- key: tidesCoefficient
+  name: tides coefficient in calculating sea level
+  value: 0.0
+  description: If this or the subsequent parameter are empty the calculation of the sea level will not use OTPSNC to predict tides
+
+- key: heightCoefficient
+  name: height coefficient in calculating sea level
+  value: 1.0
+  description: No descriptions
+
+#
+# Paths to parent data
+#
+
+- key: OCnameU
+  name: parent ocean U-vel filename
+  value: /data/inputs/METOCEAN/historical/model/ocean/CMS/MedSea/CMCC/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_d-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc # 1h/YYYY(i)/MM(i)/YYYYMMDD(i)_3dh-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc #_dm-CMCC--UCOM-GOFS16-GLOB-b*_an-fv01.00.nc # /data/inputs/METOCEAN/historical/model/ocean/CMCC/GlobOce/GOFS16/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_dm-CMCC--UCOM-GOFS16-GLOB-b*_an-fv01.00.nc #YYYYMMDD(i)_d-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc
+  description: path of the ocean current U data file for input.
+
+- key: OCnameV
+  name: parent ocean V-vel filename
+  value: /data/inputs/METOCEAN/historical/model/ocean/CMS/MedSea/CMCC/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_d-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc #1h/YYYY(i)/MM(i)/YYYYMMDD(i)_3dh-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc #/data/inputs/METOCEAN/historical/model/ocean/CMCC/GlobOce/GOFS16/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_dm-CMCC--VCOM-GOFS16-GLOB-b*_an-fv01.00.nc  #YYYYMMDD(i)_d-CMCC--RFVL-MFSeas8-MEDATL-b*_an-sv09.00.nc
+  description: path of the ocean current V data file for input
+
+- key: OCnameS
+  name: parent ocean salinity filename
+  value: /data/inputs/METOCEAN/historical/model/ocean/CMS/MedSea/CMCC/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_d-CMCC--PSAL-MFSeas8-MEDATL-b*_an-sv09.00.nc #1h/YYYY(i)/MM(i)/YYYYMMDD(i)_3dh-CMCC--PSAL-MFSeas8-MEDATL-b*_an-sv09.00.nc #/data/inputs/METOCEAN/historical/model/ocean/CMCC/GlobOce/GOFS16/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_dm-CMCC--PSAL-GOFS16-GLOB-b*_an-fv01.00.nc  #YYYYMMDD(i)_d-CMCC--PSAL-MFSeas8-MEDATL-b*_an-sv09.00.nc
+  description: path of the ocean salinity data file for input
+
+- key: OCnameT
+  name: parent ocean temperature filename
+  value: /data/inputs/METOCEAN/historical/model/ocean/CMS/MedSea/CMCC/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_d-CMCC--TEMP-MFSeas8-MEDATL-b*_an-sv09.00.nc #1h/YYYY(i)/MM(i)/YYYYMMDD(i)_3dh-CMCC--TEMP-MFSeas8-MEDATL-b*_an-sv09.00.nc #/data/inputs/METOCEAN/historical/model/ocean/CMCC/GlobOce/GOFS16/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_dm-CMCC--TEMP-GOFS16-GLOB-b*_an-fv01.00.nc  #YYYYMMDD(i)_d-CMCC--TEMP-MFSeas8-MEDATL-b*_an-sv09.00.nc
+  description: path of the ocean temperature data file for input
+
+- key: OCnameSSH
+  name: parent ocean ssh filename
+  value: /data/inputs/METOCEAN/historical/model/ocean/CMS/MedSea/CMCC/analysis/1h/YYYY(i)/MM(i)/YYYYMMDD(i)_2dh-CMCC--ASLV-MFSeas8-MEDATL-b*_an-sv09.00.nc #/data/inputs/METOCEAN/historical/model/ocean/CMCC/GlobOce/GOFS16/analysis/day/YYYY(i)/MM(i)/YYYYMMDD(i)_dm-CMCC--ASVL-GOFS16-GLOB-b*_an-fv01.00.nc #/data/inputs/metocean/historical/model/ocean/CMCC/CMEMS/analysis/1h/YYYY(i)/MM(i)/YYYYMMDD(i)_2dh-CMCC--ASLV-MFSeas8-MEDATL-b*_an-sv09.00.nc
+  description: path of the ocean SSH data file for input
+
+- key: ATMname
+  name: atmosphere general filename release (I part)
+  value: /data/inputs/METOCEAN/historical/model/atmos/ECMWF/IFS_010/analysis/6h/netcdf/YYYY(i)/MM(i)/YYYYMMDD(i)-ECMWF---AM0100-MEDATL-bYYYYMMDD(i+1)_an-fv11.00.nc #/data/inputs/metocean/historical/model/atmos/ECMWF/IFS_010/analysis/6h/netcdf/YYYY(i)/MM(i)/YYYYMMDD(i)-ECMWF---AM0100-MEDATL-bYYYYMMDD(i+1)_an-fv11.00.nc
+  description: path of the atmosphere data file for input
+
+
+#
+# optional variables
+#
+
+- key: boxExt
+  name: box extension
+  value: 2.0
+  description: increase the cutted box size (measured in terms of % of the uns. grid size) for the indata files generation. (default =  10.0) 
+
+- key: SSHvar
+  name: parent ocean ssh variable name
+  value: zos # zos or zos_detited
+  description: variable name for ssh field. Analysis data on ZEUS has zos and zos_detided vars. (default = zos)
+
+- key: ActiveIcVars
+  name: activated variables
+  value: ['t','s','ssh','uv']
+  description: Empty list means no IC computation. valid values (case-insensitive) are temperature (t), salinity (s), water level (ssh), velocities (uv). (default = All)
+
+- key: ActiveBcVars
+  name: activated variables
+  value: ['t','s','ssh','uv']  
+  description: Empty list means no BC computation. Valid values (case-insensitive) are temperature (t), salinity (s), water level (ssh), velocities (uv). (default = All) 
+
+- key: ActiveATM
+  name: activate ATM files
+  value: true   # True/False or On/Off valid values 
+  description: activate ATM files generation (both tc.dat and wp.dat files). (default = True)
+
+- key: IndataDir
+  name: Internal Data Directory
+  value: ./indata    # 
+  description: path of the internal data (indata) directory. (default = ./indata/) 
+
+- key: OUTBC_dir
+  name: bc output directory
+  value: ./output/bc     
+  description: path of the output directory for BC files  (default = ./output/bc) 
+  
+- key: OUTIC_dir
+  name: ic output directory
+  value: ./output/ic     
+  description: path of the output directory for IC files  (default = ./output/ic)
+
+- key: OUTATM_dir
+  name: ic output directory
+  value: ./output/atm     
+  description: path of the output directory for ATM files  (default = ./output/atm)  
+
+- key: LSM_file
+  name: land-sea mask
+  value: /data/inputs/METOCEAN/historical/model/auxiliary_data/land_sea_mask/ECMWF_010deg_lsm_Glo.nc    
+  description: path to file for Land-Sea Mask needed when internal dataset lack of it. Resolution must match the one at ATM files.
