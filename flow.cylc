@@ -36,7 +36,7 @@
             # Add your postprocessing commands here (e.g., generating plots, statistics)
 
     [[da]]
-        #script = run_da.sh
+        #script = darun.sh
             # Postprocess the model outputs
             # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
             # Add your postprocessing commands here (e.g., generating plots, statistics)    

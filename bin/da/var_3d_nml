@@ -1,0 +1,453 @@
+!-----------------------------------------------
+! GLOCEANVAR NAMELIST
+!-----------------------------------------------
+!
+! NAMELIST RUNLST
+! ---
+&RUNLST
+   NCONF = 101
+   NSUBDOMAINS = 0
+   LL_NOFGAT = .TRUE.
+   LLVARMDT = .FALSE.
+   LL_RESTART_FILE=.FALSE.
+   IDOUBLEDOM = 0   ! Incremental 3DVAR step
+/
+&STVLST
+   LL_TS = .TRUE.
+   LL_UV = .FALSE.
+   LL_SSH= .TRUE.
+   LL_SST= .FALSE.
+   LL_SSS= .FALSE.
+/
+!-----------------------------------------------
+!
+! NAMELIST EXTLST
+! ---
+&EXTLST
+   NWRAPS  = 0
+   LLDUPLOBS= .TRUE.
+/
+!-----------------------------------------------
+!
+! NAMELIST ANPPLST
+! ---
+&ANPPLST
+   LL_BOUNDANAL = .FALSE.
+   ZANMAXTEM = 6.0
+   ZANMAXSAL = 2.0
+   LLSHAPIROANL = .FALSE.
+   NN_ITERSHAP = 6
+   LL_IAU = .TRUE.
+   LL_BOTTOMFILTER = .TRUE.
+   LL_WRITECORRBIN  = .FALSE.
+   LL_HRINTERP = .FALSE.
+/
+!-----------------------------------------------
+!
+! NAMELIST ICELST
+! ---
+&ICELST
+   LL_ICEREJ = .FALSE.
+   LL_ICEBGFILT = .FALSE.
+   LL_ICERFMASK = .FALSE.
+   LL_ICEREJ_DCOAST = .FALSE.
+   LL_ICEANFILT = .FALSE.
+   ZMIN_ICEDIST = 100.
+   ZICEINFLDIST = 750.
+   NN_ICEREC = -1
+   LL_ICE_ONEFILE = .TRUE.
+/
+
+!-----------------------------------------------
+!
+! NAMELIST EOFLST
+! ---
+&EOFLST
+   NEOF= 25
+   NKMT = 185
+   NREGS = 90351 
+   EOGNX = 90351
+   EOGNY = 1
+   EOGNZ = 92 
+   CFILEEOF = 'EOF.nc'
+   NPRINTEOF = 1
+   LSQUAREDEVA = .FALSE.
+   LL_MDEOFS = .FALSE.
+   RMD_DEP_MAX = 500.
+   REDNMC = 0.85,
+   NN_DENSREC = -1
+   LL_WRITE_MDEOFS = .FALSE.
+   LL_BGFACT = .FALSE.
+   LL_UNMASK_EOFS = .FALSE.
+   LL_SSH_UNBALANCED = .TRUE.  !* Unbalanced component for SST
+/
+
+!-----------------------------------------------
+!
+! NAMELIST OBSLST
+! ---
+&OBSLST
+   OBS_SLA = 1
+   OBS_ARG = 1
+   OBS_XBT = 0
+   OBS_GLD = 0
+   OBS_VEL = 0
+   OBS_TRJ = 0
+   OBS_SST = 0
+   OBS_SSS = 0
+   OBS_AMSRE_SST = .FALSE.
+   OBS_MWOI_SST = .FALSE.
+   OBS_AMSRE_SWATH_SST = .FALSE.
+   OBS_TMI_SWATH_SST = .FALSE.
+   OBS_TMI_SWATH_SST = .FALSE.
+   OBS_AQUAR_SSS = .FALSE.
+   OBS_COPERN_L3S= .TRUE. 
+   OBS_COPERN_L3= .FALSE. 
+/
+!-----------------------------------------------
+!
+! NAMELIST GRDLST
+! ---
+&GRDLST
+   NTR      =  1,
+   GRID     =  1,
+   CGRID    =  'BS2736L31', 'XXXXXXX', 'XXXXXXX'
+   RATIO    =  1.,
+   MASK     =  3,
+   BARMD    =  0,
+   BALMD    =  1, !*
+   BA2MD    =  0,
+   DIVDA    =  0,
+   DIVDI    =  0,
+/
+!-----------------------------------------------
+!
+! NAMELIST CTLLST
+! ---
+&CTLLST
+   CTL_ALG  = 'L-BFGS-B'
+   CTL_NIMAX = 500
+   CTL_NSMAX = 500
+   CTL_M    = 20    
+   CTL_TOL  = 1.E-2
+   CTL_PER  = 1.E-2
+   LL_BFEND = .FALSE.
+/
+!-----------------------------------------------
+!
+! NAMELIST RCFLST
+! ---
+&RCFLST
+! Recursive filter : TYPE 0 is without RF 1 is first-order, 2 is third-order
+   RCF_TYPE = 1
+   RF_CORRAD_MFACT = 1.0 !0.707107             ! Corrective factor for correl. lengths
+   RCF_NTR  = 6                                ! Iterations (1st order only)
+   RCF_L    = 8000.                           ! Constant length-scale if LL_RFLV = .false. if use shyfem this is used for alpha computation as corr. rad.
+   RCF_LLVVCR = .FALSE.                        ! Vertically varying CLS
+   RCF_LLTSAPART = .FALSE.                     ! TS separate specification
+   RCF_EFC  = 5.                               ! Security factor for grids
+   LLPRINTRCFLC = .FALSE.                      ! Verbosity for rec.filter coefficients
+   LL_RFLV = .FALSE.                           ! 3D specificarion of correl. lengths
+   RF_CRMN = 500.                              ! MinMax CLS when reading table
+   RF_CRMX = 10000.
+   RF_NCR = 200                                ! Intervals for CLS
+   RF_NRES = 10                                ! Intervals for resolution
+   LL_READCOMPSC_LV = .FALSE.                  ! Reading lookup table
+   LL_WRITECOMPSC_LV = .FALSE.                 ! Writing lookup table
+   LLRFMASK = .FALSE.                          ! Masker RF
+   LL_CORRAD_2D = .TRUE.                       ! 2D Only CLS data
+/
+!-----------------------------------------------
+!
+! NAMELIST SLALST
+!-----------------------------------------------
+! Satellite Altimetry namelist block
+!-----------------------------------------------
+! - The max number of predefined instrument is 15 (hardcoded)
+! 'ERS1         ', 'ERS2         ', 'ENVISAT      ',
+! 'GFO          ', 'JASON1       ', 'JASON2       ',
+! 'TP           ', 'CRYOSAT2     ', 'GEOSAT       ',
+! 'ALTIKA       ', 'JASON2N      ', 'JASON3       ',
+! 'SENTINEL3A   ', 'JASON2G      ', 'SENTINEL3B   '
+
+! - To discard the use of one of the above instrument 
+!   set to .false. the corresponding element in the list :
+!   * SLA_USES_DEF : .true./.false. to apply or not the instrument
+!     Default is .true.for the 13 instruments (+additional date/file checks)
+! - To reset the instrument error modify the corresponding entry :
+!   * SLA_ERR_DEF  : error in cm
+! - To use addtional instruments set :
+!   * LL_USERDEF_SAT to .true.
+!   * NN_USERDEF_SAT to the number of new instrument
+!   * And fill out the namelist block &USRSLA
+! - SLA misfit bias :
+!   * LL_UNBIAS_SLA_AT .true. for along track bias (MED)
+!   * LL_UNBIAS        .true. global bias
+!   * LL_UNBIAS_AFTER_OBSREJ .true.
+!     Remove the residual bias after observation rejection
+!     before entering the cost function.
+!     (TODO improve these settings)
+! ---
+&SLALST
+   SLA_DEP  = 150.
+   SLA_USES_DEF = .TRUE.,.TRUE.,.TRUE.,.TRUE.,.TRUE.,
+                  .TRUE.,.TRUE.,.TRUE.,.TRUE.,.TRUE.,
+                  .TRUE.,.TRUE.,.TRUE.,.TRUE.,.TRUE.,
+   LCORRSSH = .FALSE.,
+   LLFILTERSLA = .FALSE.,
+   NLANC_KN = 7,
+   SLA_ERR_DEF  = 0.05,  0.05,  0.05,
+                  0.10,  0.03,  0.025,
+                  0.03,  0.025, 0.12,
+                  0.025, 0.025, 0.025,
+                  0.025, 0.025, 0.025,
+   ZSLANML = 700.,
+   LLUSEMDTERR = .TRUE.
+   CSLA_OPT = 'DT'
+   CSLA_FMT = 'NEW'
+   LL_VARLNM = .FALSE.
+   LL_UNBIAS_SLA = .FALSE.
+   LL_UNBIAS_AFTER_OBSREJ = .TRUE.
+   LL_UNBIAS_SLA_AT = .TRUE.
+   LL_WRITE_SLA_BIAS= .FALSE.
+   LL_IBERR = .FALSE.
+   SLA_REPERR_INFLAT = 1.0
+   LL_SLA_CORRECTIVE_MAP =.FALSE.
+   LL_USERDEF_SAT = .FALSE.
+   NN_USERDEF_SAT = 0
+
+/
+!-----------------------------------------------
+!
+! NAMELIST USRSLA 
+!-----------------------------------------------
+! User defined SLA instrument namelist block
+!-----------------------------------------------
+! To Add a user defined SLA instrument set 
+! (see &SLALST block):
+!   * LL_USERDEF_SAT to .true. (&SLALST block)
+!   * NN_USERDEF_SAT to the number of new instrument
+!
+! For each of the additional NN_USRDEF_SAT satellite 
+! fill in the array entries (from 1 to NN_USRDEF_SAT)
+!   * CSLASATID_USR : instrument name (10 char.max), 
+!   * SLA_ERR_USR   : instrument err. (cm), 
+!   * ISLASATSTART_USR and ISLASATEND_USR 
+!     starting/ending time period with format 
+!     YYYYMM or 999999 for current sat.
+!   * SLA_USES_USR can be set to .FALSE to discard
+!     one satellite entry
+! ---
+&USRSLA
+
+   CSLASATID_USR(1)='JASON2N'
+   SLA_USES_USR(1) = .TRUE.
+   SLA_ERR_USR(1)  = 0.03
+   ISLASATSTART_USR(1)=201610
+   ISLASATEND_USR(1)  =999999
+
+   CSLASATID_USR(2)='JASON2G'
+   SLA_USES_USR(2) = .TRUE.
+   SLA_ERR_USR(2)  = 0.03
+   ISLASATSTART_USR(2)=201705
+   ISLASATEND_USR(2)  =999999
+/
+!-----------------------------------------------
+!
+! NAMELIST SSTLST
+! ---
+&SSTLST
+   SST_ERRS = 0.5,0.5,0.5,0.5,0.5,0.5
+   LLSSTDIAMPLCORR = .FALSE.
+   LLSSTMODBIAS = .FALSE.
+/
+!-----------------------------------------------
+!
+! NAMELIST SSSLST
+! ---
+&SSSLST
+   SSS_ERRS = 0.3, 0.3
+/
+!-----------------------------------------------
+!
+! NAMELIST MPILST
+! ---
+&MPILST
+   LLUSEMPI=.FALSE.,
+   NIOMASTER=1,
+   NIOMASTERB=1,
+   NMPIDOMS=3 
+/
+!-----------------------------------------------
+!
+! NAMELIST BMDLST
+! ---
+&BMDLST
+   BMD_DT    = 7200. 
+   BMD_NDY   =  3.
+   BMD_ADY   =  1.
+   BMD_ALP   = 1.0
+   BMD_FC1   = 0.1
+   BMD_FC2   = 0.2
+   BMD_OVR   = 1.9
+   BMD_RESEM = 5.E-2
+   BMD_NCNT  = 201
+/
+!-----------------------------------------------
+!
+! NAMELIST OBSHAN
+! ---
+&OBSHAN
+   OBSOPT = 'GLO',
+   ZTIME_WEIGTH = 10.0,
+   LLLATINT_TAB= .FALSE.
+   LLEVEFORMV = .FALSE.
+   IO_OBSFORMAT = 1
+   LLOBSSTAT = .TRUE.
+   LL_ONEPROC103 = .FALSE.
+   LL_READALLBIN103 = .TRUE.
+   LL_WRITE_OBS_SCREEN = .TRUE.
+   LL_NOPSABORT = .TRUE.
+/
+!-----------------------------------------------
+!
+! NAMELIST PERTLST
+! ---
+&PERTLST
+   LLPERTOBS = .FALSE.
+   NSEED = 0
+   ZRFACT = 1.
+/
+!-----------------------------------------------
+!
+! NAMELIST INSLST
+! ---
+&INSLST
+!   CINS_FMT = 'EN3',
+   CINS_FMT = 'COR',
+   ZMAXDEP =6000.0, 6000.0, 6000.0,6000.0
+   INS_LQC_POS     = .TRUE.
+   INS_LQC_TIME    = .TRUE.
+   INS_LQC_SAL     = .TRUE.
+   INS_LQC_TEMP    = .TRUE.
+   INS_LQC_PRE     = .TRUE.
+   INS_LQC_PROF_T  = .FALSE.
+   INS_LQC_PROF_S  = .FALSE.
+   INS_LQC_PROF_P  = .TRUE.
+   INS_CHK_TIME    = .TRUE.
+   INS_ARG_GREYL   = .TRUE.
+   LL_VERTCHECK    = .FALSE.
+   LL_NEWINSERR    = .TRUE.
+   LL_ICOADS = .FALSE.,
+   LL_KEEP_SURFACE = .TRUE.,
+   CICOADS_FMT = 'NCDF',
+   LL_INSREPERR_IRREG = .TRUE.,
+   LL_VTHINNING = .TRUE.,
+   LL_VAVERAGING = .FALSE.,
+   NN_VERTMESH = 1
+/
+!-----------------------------------------------!-----------------------------------------------
+!
+! NAMELIST THINLST
+! ---
+&THINLST
+   LTHIN_SLA  = .FALSE.
+   LTHIN_INS  = .FALSE.
+   LTHIN_SST  = .TRUE.
+   LTHIN_SSS  = .TRUE.
+   CINSTHINOPT  = 'A'
+   LDOUBLETHIN = .TRUE.
+   RTHIND_SLA_X=2.0, RTHIND_SLA_Y=2.0
+   RTHIND_INS_X=1.5, RTHIND_INS_Y=1.5, RTHIND_INS_Z=1.5
+   RTHIND_SST_X=2.5, RTHIND_SST_Y=2.5
+   RTHIND_SSS_X=1.5, RTHIND_SSS_Y=1.5
+/
+!-----------------------------------------------
+!
+! NAMELIST BGQCLST
+! ---
+&BGQCLST
+   LLBGQC_SLA = .TRUE.
+   LLBGQC_INS = .TRUE.
+   LLBGQC_SST = .TRUE.
+   LLBGQC_SSS = .TRUE.
+   RALFA_SLA=9.0
+   RALFA_INS=11.0
+   RALFA_SST=11.0
+   RALFA_SSS=11.0
+   LLUSEBGERR = .TRUE.
+   LLFORMBGE = .FALSE.
+   RBGERR_SSH=0.10
+   RBGERR_SAL=0.2
+   RBGERR_TEM=1.00
+   RBGERR_SST=0.50
+   RBGERR_SSS=0.2
+ /
+!-----------------------------------------------
+!
+! NAMELIST CLCKLST
+! ---
+&CLCKLST
+   LLCLCK_INS = .TRUE.
+   LLCLCK_SST = .TRUE.
+   LLCLCK_SSS = .TRUE.
+   CLIMLIM = 3., 9., 9.
+ /
+&CREJLST
+ /
+&HUBERLST
+ /
+&DBGLST
+ /
+&BALLST
+  BAL_NNEOS = 2
+  LL_EOSBAL_FIRSTGUESS = .TRUE.
+/
+&TLADLST
+/
+&HYBLST
+  ! 
+  LL_HYBRID = .FALSE.
+  ! Flow-dependent part
+  ZALPHA = 0.7071068 ! = sqrt( 0.5 ) weigth to static
+  ZALPHA_VAR = 0.01  ! Not used
+  CFILEEOF = 'ENSEOF.nc' 
+  !CFILEEOF = 'EOFS3D.nc' 
+  NN_ALPHA_CTL = 0
+  LL_ALPHA_ONLINE = .FALSE.
+  !  NN_ALPHA_CTL = 1
+  LL_PRECON_ALPHA = .FALSE.
+  NEOF= 15                     ! No of retained EOFS
+  NKMT = 62                    ! Vertical levels
+  NREGS = 84925                ! Regions
+  EOGNX = 395                  ! EOF Grid x-dim
+  EOGNY = 215                  ! EOF Grid y-dim
+  EOGNZ = 31                   ! EOF Grid levels
+  REDNMC_H = 0.80,             ! Corrective factor for EOFs
+  LSQUAREDEVA_H = .FALSE.      ! Have eigenvalues to be root-squared?
+  NN_MLD_VLOC_H = 0            ! MLD-dependent localization type
+  LL_UNMASK_EOFS_H = .FALSE.   ! Unmask EOFs
+  LL_BGFACT_H = .FALSE.        ! Use variance factor map
+  ! 3D EOFS Part
+  LL_EOFS3D = .FALSE. ! EOFS3D.nc
+!  NN_EOFS3D = 53 ! TOTAL NUMBER OF EOFS (no of anomalies minus 1)
+  NN_EOFS3D = 26 
+  AEO = 0.92   ! (static+flow.dep. part) sqrt(0.85) 
+/
+!-----------------------------------------------
+
+!-----------------------------------------------
+!
+! SHYFEM NML
+! ---
+&SHYFEM
+  !
+  REJ_SLA = .TRUE.
+  UPDATE_RESTART = .TRUE.
+  EXP_NAME='adrifs_0001_',
+  RST_DIR_READ='/work/opa/ms11120/EXPERIMENTS/OceanVar_SHYFEM/SHYFEM/restart_files/NO_ANALYSIS/',
+  RST_DIR_WRITE='/work/opa/ms11120/EXPERIMENTS/OceanVar_SHYFEM/SHYFEM/restart_files/',
+/
+!-----------------------------------------------
+
+

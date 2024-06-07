@@ -9,12 +9,11 @@
 
 $title
         uae 
-        ../output/shyfem/adri_output
+        ../output/shyfem/adri_prior_output
         ../input/adri.bas
 $end
 
 
-        idtrst  = -1   # to write restart files at the end 
 $para
         date = 
         time = 000000
@@ -25,13 +24,13 @@ $para
         idtmin = 1
 
         itanf = 0  
-        itend = 86400  
+        itend = 172800 # 86400  # Simulation length in seconds
         idt   = 300
 
         itrst   = 0
         ityrst  = 1     
                 
-        idtrst  = 0   
+        idtrst  = -1     # to write restart files at the end 
 
         idtout = 3600 
         itmout = 1800
