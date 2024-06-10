@@ -6,10 +6,6 @@
 #BSUB -e log.adri_%J.err
 #BSUB -P 0601 
 
-PARAM_FILE=param.str
-
-SHYMPI_DIR=/users_home/cmcc/js04724/source/SHYFEM # Direction for SHYFEM compiled code
-
 # load modules
 source $SHYMPI_DIR/shyfem.env #shympi_env
 

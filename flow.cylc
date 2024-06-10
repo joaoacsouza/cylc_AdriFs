@@ -13,7 +13,10 @@
     [[root]]
         [[[environment]]]
             START_DATE = 20240101T00 #$CYLC_TASK_CYCLE_POINT # (use env variable when cycling)
-            WALUIGI_INPUT_FILE = config.yml
+            WALUIGI_INPUT_FILE = config.yml # Waluigi pre-processing config file
+            CONDA_ENV=/work/cmcc/js04724/waluigi/waluigi # Conda environment for Waluigi
+            PARAM_FILE=param.str # SHYFEM model namelist 
+            SHYMPI_DIR=/users_home/cmcc/js04724/source/SHYFEM # Direction for SHYFEM compiled code
 
     [[WALUIGI_ENV]]
         env-script = """

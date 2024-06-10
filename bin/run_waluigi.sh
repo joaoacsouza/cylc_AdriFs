@@ -10,7 +10,6 @@
 # exit on any error
 #set -e
 
-CONDA_ENV=/work/cmcc/js04724/waluigi/waluigi
 if [[ ! -z $CONDA_ENV ]]; then
     module purge 						# purge already active modules
     module --silent load anaconda/3-2022.10                     # load anaconda module

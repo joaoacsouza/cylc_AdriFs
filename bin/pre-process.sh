@@ -10,6 +10,8 @@ HOUR_PART=${CYLCE_POINT:9:2}
 FORMATTED_CYCLE_POINT=$(date -d "${CYCLE_POINT:0:8} ${CYCLE_POINT:9:2}:00:00" +"%Y/%m/%d %H:%M:%S")
 echo $FORMATTED_CYCLE_POINT
 
+################
+##### Manipulate date to start pre-processing one day earlier to avoid problems with boundary conditions
 # Extract the date and time parts
 date_part=$(echo $FORMATTED_CYCLE_POINT| cut -d' ' -f1)
 time_part=$(echo $FORMATTED_CYCLE_POINT | cut -d' ' -f2)
@@ -24,6 +26,7 @@ previous_date=$(date -d "${date_part} -1 day" +%Y/%m/%d)
 previous_datetime="${previous_date} ${time_part}"
 
 echo $previous_datetime
+############################
 
 # Extract environment variables
 WORKFLOW_ID=${CYLC_WORKFLOW_ID}
