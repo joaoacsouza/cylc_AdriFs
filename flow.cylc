@@ -7,16 +7,21 @@
     [[graph]]
             #P1D = pre => model => prepda => da => post
             #R1 = model
-            R1  = pre => model
+            #R1  = pre => model
+            R1 = prepda
 
 [runtime]
     [[root]]
         [[[environment]]]
-            START_DATE = 20240101T00 #$CYLC_TASK_CYCLE_POINT # (use env variable when cycling)
+            START_DATE = 20240101T00 # $CYLC_TASK_CYCLE_POINT #(use env variable when cycling)
             WALUIGI_INPUT_FILE = config.yml # Waluigi pre-processing config file
             CONDA_ENV=/work/cmcc/js04724/waluigi/waluigi # Conda environment for Waluigi
             PARAM_FILE=param.str # SHYFEM model namelist 
             SHYMPI_DIR=/users_home/cmcc/js04724/source/SHYFEM # Direction for SHYFEM compiled code
+            GRID=../input/adri.grd
+
+            SAT_PATH='/data/inputs/METOCEAN/historical/obs/ocean/satellite/CMS/GlobOce/altimetry/L3/day/'
+
 
     [[WALUIGI_ENV]]
         env-script = """
@@ -33,7 +38,7 @@
         script = modelrun.sh
 
     [[prepda]]
-        #script = prep_da.sh
+        script = prepda.sh
             # Postprocess the model outputs
             # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
             # Add your postprocessing commands here (e.g., generating plots, statistics)
