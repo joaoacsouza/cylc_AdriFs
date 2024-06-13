@@ -23,50 +23,7 @@ EXECUTION_PATH="${SUITE_WORK_DIR}/${TASK_CYCLE_POINT}/${TASK_NAME}"
 cd "${SUITE_WORK_DIR}/../bin"
 
 ##### Do the work ##############################################################
-# Observations
+# Subset observations to model domain
 python get_sla.py # Get sea level anomaly observations
-#python get_argo.py # Get Argo float observations
-#
-##Update param file (model configuration)
-## Set the key to update and the new value
-#key_to_update="        date ="
-#new_value="$FORMATTED_CYCLE_POINT"
-#
-## Submit model run
-#job_submission_output=$(bsub < submit_shympi.sh)
-#
-#job_id=$(echo "$job_submission_output" | grep -o 'Job <[0-9]*>' | grep -o '[0-9]*')
-#
-## Check if job ID was retrieved successfully
-#if [[ -z "$job_id" ]]; then
-#    echo "Failed to submit job or capture job ID. Submission output:"
-#    echo "$job_submission_output"
-#    exit 1
-#fi
-#
-#echo "Job $job_id submitted successfully."
-#
-## Function to check job status
-#check_job_status() {
-#    bjobs -noheader -o "stat" "$job_id" 2>/dev/null
-#}
-#
-## Wait for the job to complete
-#while true; do
-#    status=$(check_job_status)
-#    if [[ "$status" == "" ]]; then
-#        echo "Job $job_id not found. Retrying..."
-#        sleep 30  # Wait before retrying to handle any delay in job status update
-#        continue
-#    elif [[ "$status" == "DONE" ]]; then
-#        echo "Job $job_id completed successfully."
-#        exit 0
-#    elif [[ "$status" == "EXIT" ]]; then
-#        echo "Job $job_id failed."
-#        exit 1
-#    else
-#        echo "Job $job_id is still running (status: $status). Waiting..."
-#        sleep 60  # Wait for a minute before checking again
-#    fi
-#done
-#
+python get_insitu.py # Get in-situ observations from CMEMS
+#python get_sst.py # Get satellite SST observations

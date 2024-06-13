@@ -14,16 +14,18 @@ import pandas as pd
 import numpy as np
 import glob
 
+var='sla_filtered'
+
 # Read model grid and get extremities
 ds = pd.read_csv(os.getenv("GRID"), header=None, delimiter=r'\s+', nrows=221572) # The nrows value was hardcoded for the AdriFs grid 
-min_lat =  np.nanmin(np.asarray(ds)[:,3])
-max_lat =  np.nanmax(np.asarray(ds)[:,3])
-min_lon =  np.nanmin(np.asarray(ds)[:,4])
-max_lon =  np.nanmax(np.asarray(ds)[:,4])
+min_lat =  np.nanmin(np.asarray(ds)[:,4])
+max_lat =  np.nanmax(np.asarray(ds)[:,4])
+min_lon =  np.nanmin(np.asarray(ds)[:,3])
+max_lon =  np.nanmax(np.asarray(ds)[:,3])
 
 # Prepare path for satellite files
 list_sat = ['Altika','Cryosat-2','HY-2B','Jason-3','Sentinel-3A','Sentinel-3B','Sentinel-6A']
-sat_path = os.getenv("SAT_PATH") # get obs path from env (flow.cylc)
+sat_path = os.getenv("SLA_PATH") # get obs path from env (flow.cylc)
 date     = os.getenv("START_DATE") # get cycle date from Cylc env variable
 
 # Parse date

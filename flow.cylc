@@ -20,8 +20,9 @@
             SHYMPI_DIR=/users_home/cmcc/js04724/source/SHYFEM # Direction for SHYFEM compiled code
             GRID=../input/adri.grd
 
-            SAT_PATH='/data/inputs/METOCEAN/historical/obs/ocean/satellite/CMS/GlobOce/altimetry/L3/day/'
-
+            SLA_PATH='/data/inputs/METOCEAN/historical/obs/ocean/satellite/CMS/GlobOce/altimetry/L3/day/'
+            INSITU_PATH='/data/inputs/METOCEAN/historical/obs/ocean/in_situ/CMS/GlobOce/'
+            SST_PATH='/data/inputs/METOCEAN/historical/obs/ocean/satellite/CMS/MedSea/SST/L4/day/'
 
     [[WALUIGI_ENV]]
         env-script = """
