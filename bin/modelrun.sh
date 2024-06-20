@@ -31,17 +31,6 @@ new_value="$FORMATTED_CYCLE_POINT"
 # Use sed to update the param.str file (model namefile)
 sed -i.bak "s/^$key_to_update/$key_to_update $new_value/" param.str
 
-#sed -i "s|boundn = #'boundn_1.dat'|boundn = '$SUITE_WORK_DIR/../bin/output/bc/boundn_1.dat'|g" param.str
-#sed -i "s|tempn =|tempn = '$SUITE_WORK_DIR/../bin/output/bc/tempn_1.dat'|g" param.str
-#sed -i "s|saltn =|saltn = '$SUITE_WORK_DIR/../bin/output/bc/saltn_1.dat'|g" param.str
-#sed -i "s|vel3dn =|vel3dn = '$SUITE_WORK_DIR/../bin/output/bc/uv3d_1.dat'|g" param.str
-#
-#sed -i "s|tempin =|tempin = '$SUITE_WORK_DIR/../bin/output/ic/tempin.dat'|g" param.str
-#sed -i "s|saltin =|saltin = '$SUITE_WORK_DIR/../bin/output/ic/saltin.dat'|g" param.str
-#
-#sed -i "s|wind =|wind = '$SUITE_WORK_DIR/../bin/output/atm/wp.dat'|g" param.str
-#sed -i "s|qflux =|qflux = '$SUITE_WORK_DIR/../bin/output/atm/tc.dat'|g" param.str
-
 #copy all initial, boundary, and forcing files to the run directory
 cp output/*/* .
 

@@ -444,9 +444,9 @@
   !
   REJ_SLA = .TRUE.
   UPDATE_RESTART = .TRUE.
-  EXP_NAME='adrifs_0001_',
-  RST_DIR_READ='/work/opa/ms11120/EXPERIMENTS/OceanVar_SHYFEM/SHYFEM/restart_files/NO_ANALYSIS/',
-  RST_DIR_WRITE='/work/opa/ms11120/EXPERIMENTS/OceanVar_SHYFEM/SHYFEM/restart_files/',
+  EXP_NAME='adrifs_',
+  RST_DIR_READ=
+  RST_DIR_WRITE=
 /
 !-----------------------------------------------
 
