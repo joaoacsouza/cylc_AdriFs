@@ -444,7 +444,7 @@
   !
   REJ_SLA = .TRUE.
   UPDATE_RESTART = .TRUE.
-  EXP_NAME='adrifs_',
+  EXP_NAME='adri_',
   RST_DIR_READ=
   RST_DIR_WRITE=
 /

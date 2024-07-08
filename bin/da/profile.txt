@@ -1,0 +1,46 @@
+# General Environment
+env,MYENVDEV_ALIAS,eas6_v6
+env,MYE_BASELINE_REPO_TAG,eas6_v6
+# env,MYE_CONDA_ENV,myenv1
+eval,alias myeh="cd ${MYENVDEV_HOME}"
+eval,alias myed="cd ${MYENVDEV_PACK}/med_prod"
+eval,alias myew="cd ${MYENVDEV_WORKDIR}/exp/${MYENVDEV_ALIAS}"
+# Modules
+# eval,conda activate ${MYE_CONDA_ENV}
+eval,module purge
+eval,module load intel19.5/19.5.281 intel19.5/netcdf/C_4.7.2-F_4.5.2_CXX_4.3.1
+eval,module load intel19.5/nco/4.8.1
+# Repositories
+gitclone,Prep4PHY,git@github.com:CMCC-Foundation/Prep4PHY.git
+gitclone,NEMO_V3.6_rep,git@github.com:CMCC-Foundation/mednemo.git
+gitclone,WWIII_rep,git@github.com:CMCC-Foundation/medww.git
+gitclone,petra,git@github.com:CMCC-Foundation/medpetra.git
+gitclone,3dvar,git@github.com:CMCC-Foundation/med3dvar.git
+gitclone,mic-square,git@github.com:CMCC-Foundation/mic-square.git
+# Path
+env,PATH,${MYENVDEV_PACK}/petra/aux:$PATH
+env,PATH,${MYENVDEV_PACK}/petra/exp_build_pack:$PATH
+env,PATH,${MYENVDEV_PACK}/mic-square/src/main/python/sp_dir:$PATH
+# Variables
+env,MYE_STARTDATE,20150101
+env,MYE_STATIC_BASEDIR,/work/opa/ms11120/EXPERIMENTS/OceanVar_SHYFEM/OceanVar/MFS_EAS6_STATIC_V4
+env,MYE_XIOS,/users_home/opa/mfs/lib/xios/xios-1.0.branch.r703
+env,MYE_ARPACK,/users_home/opa/mfs/lib/new_arpack/ARPACK
+env,MYE_DRHOOK,/users_home/opa/mfs/lib/new_drhook/drhook_CY33R1.007
+env,MYE_SSTDATA0,${MYE_STATIC_BASEDIR}/SST_DATA0_v3
+env,MYE_NEMO_DATA0,${MYE_STATIC_BASEDIR}/NEMO_DATA0
+env,MYE_NEMO_DATA1,/data/opa/mfs-dev/MFS_EAS6/input_data1
+env,MYE_TDVAR_DATA0,${MYE_STATIC_BASEDIR}/OVART_DATA0
+env,MYE_TDVAR_DATA1,/data/opa/mfs-dev/MFS_EAS6/input_data1
+env,MYE_TDVAR_DATA2,/data/opa/mfs-dev/MFS_EAS6/input_data2
+env,MYE_WW_DATA0,${MYE_STATIC_BASEDIR}/WAVE_DATA0
+env,MYE_MESHMASK,${MYE_NEMO_DATA0}/mesh_mask.nc
+env,MYE_NEMOKEYS,"key_diadct"
+env,ww_static,${MYE_STATIC_BASEDIR}/WWIII_rep.tgz
+env,MYE_QUEUEP,p_short
+env,MYE_QUEUES,s_medium
+env,MYE_LSF_Project,R000
+env,MYE_SC_serial,
+env,MYE_SC,
+env,MYE_LSF_PAPP,
+env,MYE_LSF_SAPP,

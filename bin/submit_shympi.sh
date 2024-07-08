@@ -1,4 +1,4 @@
-#BSUB -x 
+#BSUB -x
 #BSUB -q p_short
 #BSUB -J adri
 #BSUB -n 144

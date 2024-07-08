@@ -26,12 +26,7 @@ cd "${SUITE_WORK_DIR}/../bin"
 ## 1.1 NAMELIST
     
     
-## 1.2 Submit script
-    sed -i "/OV_/c#BSUB -J OV_0" ${ocvar_dir}tmp/aig0/Job_EXP_A1                         ## BSUB -J
-    sed -i "/done(adrifs_/c#BSUB -w "done\(adrifs_0\)"" ${ocvar_dir}tmp/aig0/Job_EXP_A1                      ## BSUB -w
-    sed -i "/ACTUALINDEX=/cACTUALINDEX=0" ${ocvar_dir}tmp/aig0/Job_EXP_A1                                    ## ACTUALINDEX
-    sed -i "/TSD=/cTSD=$start_date" ${ocvar_dir}tmp/aig0/Job_EXP_A1                                             ## TSD
-    sed -i "/TED=/cTED=$start_date_next" ${ocvar_dir}tmp/aig0/Job_EXP_A1                                             ## TED
+## 1.2 Submit script                                            ## TED
     sed -i "/output_chunk_/cOUTDIR=${ocvar_dir}output/output_chunk_0000" ${ocvar_dir}tmp/aig0/Job_EXP_A1     ## OUTPUT DIR
     
     start_date=$start_date_next

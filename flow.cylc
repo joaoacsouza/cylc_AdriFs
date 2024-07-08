@@ -7,8 +7,8 @@
     [[graph]]
             #P1D = pre => model => prepda => da => post
             #R1 = model
-            #R1  = pre => model
-            R1 = prepda
+            R1  = pre => model => prepda => da
+            #R1 = prepda => da
 
 [runtime]
     [[root]]
@@ -40,18 +40,14 @@
 
     [[prepda]]
         script = prepda.sh
-            # Postprocess the model outputs
-            # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
-            # Add your postprocessing commands here (e.g., generating plots, statistics)
+            # Preprocess observations and updates DA namelist
 
     [[da]]
         #script = darun.sh
-            # Postprocess the model outputs
-            # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
-            # Add your postprocessing commands here (e.g., generating plots, statistics)    
+            # Runs the OceanVar DA (3DVar)
 
     [[post]]
-        #script = """
+        #script = ""
             # Postprocess the model outputs
             # echo "Postprocessing outputs for cycle point $CYLC_TASK_CYCLE_POINT"
             # Add your postprocessing commands here (e.g., generating plots, statistics)
